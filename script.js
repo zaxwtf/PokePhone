@@ -72,21 +72,25 @@ function filtrarpokemons(tipo) {
 }
 
 
-// Función para crear una tarjeta por pokemon de la lista
-// function renderizar(pokemons) {
-//     const contenedor = document.getElementById("resultado"); 
-//     console.log(pokemons)
-//     contenedor.innerHTML = pokemons.map(
-//         (pokemon) => `
-//         <article class="card">
-//         <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//         <h2>${pokemon.nombre}</h2>
-//         <p>${pokemon.tipos.join(" · ")}</p>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//     }
 
+const botonBuscar = document.getElementById("buscador-button")
+const inputBuscar = document.getElementById("buscador-input")
 
-    // console.log(renderizar(NormalizarPokemon()))
+botonBuscar.addEventListener("click", () => {
+    const contenedor = document.getElementById("resultado");
+    const pokemonBuscado = pokemonsNormalizados.find(pokemon => pokemon.nombre === inputBuscar.value)
+    console.log(pokemonsNormalizados)
+    console.log(pokemonBuscado)
+    contenedor.innerHTML = 
+        `
+        <article class= "card">
+            <div class= "${pokemonBuscado.tipos[0]}">
+                <img src="${pokemonBuscado.sprites}" alt="${pokemonBuscado.nombre}">
+                <div class: "card-content>
+                    <h2>${pokemonBuscado.nombre}</h2>
+                    <p>${pokemonBuscado.tipos.join(" · ")}</p>
+                </div>
+            </div>
+        </article>
+    `
+})
