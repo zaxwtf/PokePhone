@@ -98,3 +98,91 @@ main{
   border: 1px solid #ddd;
   border-radius: 20px;
 }
+
+.bug{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(74, 183, 105), rgb(156, 193, 166));
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.poison{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(178, 62, 255), rgb(216, 159, 255));
+  border: 1px solid #ddd;
+  border-radius: 20px;  
+}
+
+.electric{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(255, 255, 58), rgb(252, 255, 157));
+  border: 1px solid #ddd;
+  border-radius: 20px;    
+}
+
+.ground{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(128, 110, 61), rgb(223, 208, 169));
+  border: 1px solid #ddd;
+  border-radius: 20px;   
+}
+
+.fairy{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(255, 151, 241), rgb(255, 218, 254));
+  border: 1px solid #ddd;
+  border-radius: 20px;   
+}
+
+.fighting{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(255, 157, 82), rgb(255, 223, 199));
+  border: 1px solid #ddd;
+  border-radius: 20px; 
+}
+
+.psychic{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(255, 25, 228), rgb(255, 153, 243));
+  border: 1px solid #ddd;
+  border-radius: 20px; 
+}
+
+.rock{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(99, 63, 32), rgb(180, 157, 136));
+  border: 1px solid #ddd;
+  border-radius: 20px;   
+}
+
+.ghost{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(109, 38, 159), rgb(190, 157, 213));
+  border: 1px solid #ddd;
+  border-radius: 20px;    
+}
+
+.ice{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(115, 236, 255), rgb(201, 248, 255));
+  border: 1px solid #ddd;
+  border-radius: 20px;   
+}
+
+.dragon{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(72, 28, 231), rgb(169, 149, 242));
+  border: 1px solid #ddd;
+  border-radius: 20px; 
+}
