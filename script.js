@@ -37,7 +37,7 @@ function renderizar(pokemons){
     const contenedor = document.getElementById("resultado"); 
     contenedor.innerHTML = pokemons.map(
         (pokemon) => `
-        <article class= "card">
+        <article class= "card" id= "${pokemon.nombre}Tarjeta">
             <div class= "${pokemon.tipos[0]}">
                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
                 <div class: "card-content>
@@ -83,7 +83,7 @@ botonBuscar.addEventListener("click", () => {
     console.log(pokemonBuscado)
     contenedor.innerHTML = 
         `
-        <article class= "card">
+        <article class= "card" id= "${pokemonBuscado.nombre}Tarjeta">
             <div class= "${pokemonBuscado.tipos[0]}">
                 <img src="${pokemonBuscado.sprites}" alt="${pokemonBuscado.nombre}">
                 <div class: "card-content>
