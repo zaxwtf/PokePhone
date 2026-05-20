@@ -5,7 +5,7 @@ const API = "https://pokeapi.co/api/v2";
 
     async function ListarPokemons() {
         try{
-            const res = await fetch(`${API}/pokemon?limit=493`)
+            const res = await fetch(`${API}/pokemon?limit=1000`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
@@ -72,6 +72,9 @@ function NormalizarPokemon() {
 
 //Funcion para filtrar pokemons por tipo
 function filtrarpokemons(tipo) {
+    if (tipo === "todos"){
+        return pokemonsNormalizados
+    }
     const pokemons = pokemonsNormalizados
     const filtrado = pokemons.filter(p => p.tipos.includes(tipo))
     return filtrado
@@ -87,7 +90,8 @@ const SelectorTipos = document.getElementById("TypeSelector")
 
 botonBuscar.addEventListener("click", () => {
     const contenedor = document.getElementById("resultado");
-    const pokemonBuscado = pokemonsNormalizados.find(pokemon => pokemon.nombre === inputBuscar.value)
+    const busqueda = inputBuscar.value.trim().toLowerCase()
+    const pokemonBuscado = pokemonsNormalizados.find(pokemon => pokemon.nombre.toLowerCase() === busqueda)
     if (pokemonBuscado) {
         renderizar([pokemonBuscado]); // Pasamos el pokemon dentro de un array porque renderizar espera una lista
     } else {
