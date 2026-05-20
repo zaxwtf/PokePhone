@@ -66,7 +66,7 @@ function renderizar(pokemons){
     `,
         )
         .join("");
-
+        
 
         //Funcion para que detecte cuando hacemos click a una de las tarjetas y nos mande a renderizar la pagina de info de ese pokemon en concreto
         const TarjetasPokemons = document.querySelectorAll(".card")
@@ -75,14 +75,55 @@ function renderizar(pokemons){
         TarjetasPokemons.forEach(TarjetaPokemon => TarjetaPokemon.addEventListener("click", () =>{   
             const PokemonClickado = pokemonsNormalizados.find(pokemon => pokemon.id === Number(TarjetaPokemon.id))
             console.log(PokemonClickado)
-            return PokemonClickado
+            renderizarInfo([PokemonClickado])
         }))
-    
+        
     }
 
 GetPokemons()
 
 
+
+//Función para renderizar Tarjeta de información de un pokemon en concreto
+function renderizarInfo(pokemon){
+    const contenedor = document.getElementById("main"); 
+    contenedor.innerHTML = pokemon.map(
+        (poke) =>`
+        <article class="TarjetaInfo" id="${poke.id}Info">
+            <div class="PokemonHeader ${poke.tipos[0]}Header">
+                <img src="${poke.sprites}" alt="${poke.nombre}">
+                texto informativo
+            </div>
+            <div class="pokemon-content">
+                <div class="pokeInfo ${poke.tipos[0]}Body">
+                    <div class="pokeInfo-content">
+                        <h2>Info</h2>
+                        <div class="info">
+                            <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam labore eos, quasi aliquid laboriosam, nemo autem ipsum hic, quidem vel voluptas. Laboriosam quod eligendi magni. Et quis ducimus laboriosam voluptates?
+                            </p>
+                        </div>
+                        <h2>Fuerte contra:</h2>
+                        <div class="FuerteContra">
+                            <p>
+                                lo que sea
+                            </p>
+                        </div>
+                        <h2>Estadísticas</h2>
+                        <div class="estadisticas">
+                            <p>
+                                esto y lo otro
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        `
+        
+        )
+}
 
 
 
@@ -127,6 +168,7 @@ botonBuscar.addEventListener("click", () => {
 SelectorTipos.addEventListener("change", () => {
     const tipoSeleccionado = SelectorTipos.value;
     const pokemonsFiltrados = filtrarpokemons(tipoSeleccionado);
+    console.log(pokemons)
     renderizar(pokemonsFiltrados);
 });
 
