@@ -86,11 +86,12 @@ GetPokemons()
 
 //Función para renderizar Tarjeta de información de un pokemon en concreto
 function renderizarInfo(pokemon){
-    const contenedor = document.getElementById("main"); 
+    const contenedor = document.getElementById("resultado"); 
     contenedor.innerHTML = pokemon.map(
         (poke) =>`
         <article class="TarjetaInfo" id="${poke.id}Info">
             <div class="PokemonHeader ${poke.tipos[0]}Header">
+                <button id="btnRegresar">←</button>
                 <img src="${poke.sprites}" alt="${poke.nombre}">
                 texto informativo
             </div>
@@ -123,7 +124,16 @@ function renderizarInfo(pokemon){
         `
         
         )
+
+        const btnRegresar = document.getElementById("btnRegresar")
+
+        btnRegresar.addEventListener("click", ()=>{
+        renderizar(pokemonsNormalizados)
+})
 }
+
+
+//Boton volver para volver a renderizar lista pokemons
 
 
 
