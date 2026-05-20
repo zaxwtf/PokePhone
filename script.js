@@ -33,6 +33,17 @@ async function GetPokemons() {
 }
 
 
+
+
+    //funcion para Normalizar una array con los nombres de todos los pokemon y sus tipos
+function NormalizarPokemon() {
+    const resultado = pokemons.map(pokemon => ({id: pokemon.id, nombre: pokemon.name, tipos: pokemon.types.map(t => t.type.name), sprites: pokemon.sprites.front_default}))
+    return resultado
+}
+
+
+// Función para renderizar lista de pokemons
+
 function renderizar(pokemons){
     const contenedor = document.getElementById("resultado"); 
 
@@ -43,7 +54,7 @@ function renderizar(pokemons){
 
     contenedor.innerHTML = pokemons.map(
         (pokemon) => `
-        <article class= "card" id= "${pokemon.nombre}Tarjeta">
+        <article class= "card" id= "${pokemon.id}">
             <div class= "${pokemon.tipos[0]}">
                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
                 <div class = "card-content">
@@ -55,18 +66,26 @@ function renderizar(pokemons){
     `,
         )
         .join("");
-}
+
+
+        //Funcion para que detecte cuando hacemos click a una de las tarjetas y nos mande a renderizar la pagina de info de ese pokemon en concreto
+        const TarjetasPokemons = document.querySelectorAll(".card")
+        const TarjetaPokemon = 0
+
+        TarjetasPokemons.forEach(TarjetaPokemon => TarjetaPokemon.addEventListener("click", () =>{   
+            const PokemonClickado = pokemonsNormalizados.find(pokemon => pokemon.id === Number(TarjetaPokemon.id))
+            console.log(PokemonClickado)
+            return PokemonClickado
+        }))
+    
+    }
 
 GetPokemons()
 
 
 
 
-    //funcion para Normalizar una array con los nombres de todos los pokemon y sus tipos
-function NormalizarPokemon() {
-    const resultado = pokemons.map(pokemon => ({id: pokemon.id, nombre: pokemon.name, tipos: pokemon.types.map(t => t.type.name), sprites: pokemon.sprites.front_default}))
-    return resultado
-}
+
 
 
 
@@ -90,7 +109,7 @@ const SelectorTipos = document.getElementById("TypeSelector")
 
 botonBuscar.addEventListener("click", () => {
     const contenedor = document.getElementById("resultado");
-    const busqueda = inputBuscar.value.trim().toLowerCase()
+    const busqueda = inputBuscar.value.replaceAll(" ", "").toLowerCase()
     const pokemonBuscado = pokemonsNormalizados.find(pokemon => pokemon.nombre.toLowerCase() === busqueda)
     if (pokemonBuscado) {
         renderizar([pokemonBuscado]); // Pasamos el pokemon dentro de un array porque renderizar espera una lista
@@ -111,316 +130,7 @@ SelectorTipos.addEventListener("change", () => {
     renderizar(pokemonsFiltrados);
 });
 
-// SelectorTipos.addEventListener("change", () => {
-//     const contenedor = document.getElementById("resultado");
-    
 
-//     switch(SelectorTipos.value){
-//         case "fire":
-//             contenedor.innerHTML = filtrarpokemons("fire").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
 
-//         case "grass":
-//             contenedor.innerHTML = filtrarpokemons("grass").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
 
-//         case "water":
-//             contenedor.innerHTML = filtrarpokemons("water").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "electric":
-//             contenedor.innerHTML = filtrarpokemons("electric").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "ground":
-//             contenedor.innerHTML = filtrarpokemons("ground").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "rock":
-//             contenedor.innerHTML = filtrarpokemons("rock").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "steel":
-//             contenedor.innerHTML = filtrarpokemons("steel").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "psychic":
-//             contenedor.innerHTML = filtrarpokemons("psychic").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "normal":
-//             contenedor.innerHTML = filtrarpokemons("normal").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "dark":
-//             contenedor.innerHTML = filtrarpokemons("dark").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "fighting":
-//             contenedor.innerHTML = filtrarpokemons("fighting").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "flying":
-//             contenedor.innerHTML = filtrarpokemons("flying").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "ghost":
-//             contenedor.innerHTML = filtrarpokemons("ghost").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "ice":
-//             contenedor.innerHTML = filtrarpokemons("ice").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "fairy":
-//             contenedor.innerHTML = filtrarpokemons("fairy").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "poison":
-//             contenedor.innerHTML = filtrarpokemons("poison").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "bug":
-//             contenedor.innerHTML = filtrarpokemons("bug").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//         case "dragon":
-//             contenedor.innerHTML = filtrarpokemons("dragon").map(
-//         (pokemon) => `
-//         <article class= "card" id= "${pokemon.nombre}Tarjeta">
-//             <div class= "${pokemon.tipos[0]}">
-//                 <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-//                 <div class: "card-content>
-//                     <h2>${pokemon.nombre}</h2>
-//                     <p>${pokemon.tipos.join(" · ")}</p>
-//                 </div>
-//             </div>
-//         </article>
-//     `,
-//         )
-//         .join("");
-//         break;
-        
-//     }
-// })
+//Función para mostrar mas informacion de un pokemon
