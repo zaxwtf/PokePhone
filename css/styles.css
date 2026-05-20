@@ -46,7 +46,7 @@ main{
   border-radius: 20px;
   text-align: center;
   text-transform: capitalize;
-  min-width: 98vw;
+  min-width: 95vw;
 }
 .card img {
   margin-left: 3vw;
