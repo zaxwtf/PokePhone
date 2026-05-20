@@ -186,3 +186,27 @@ main{
   border: 1px solid #ddd;
   border-radius: 20px; 
 }
+
+.steel{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(84, 84, 84), rgb(196, 196, 196));
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.dark{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgb(60, 38, 13), rgb(136, 126, 114));
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.flying{
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #a5d0ff, rgb(226, 239, 255));
+  border: 1px solid #ddd;
+  border-radius: 20px;  
+}
