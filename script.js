@@ -5,7 +5,7 @@ const API = "https://pokeapi.co/api/v2";
 
     async function ListarPokemons() {
         try{
-            const res = await fetch(`${API}/pokemon?limit=151`)
+            const res = await fetch(`${API}/pokemon?limit=493`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
