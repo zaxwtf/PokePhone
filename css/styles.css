@@ -17,18 +17,12 @@ main{
 }
 
 .main-nav{
-    display: flex;
-    justify-content: center;
-    border: 3px solid;
-    width: 90vw;
-}
-
-.main-nav ul{
-    display: flex;
-    width: 90vw;
-    list-style: none;
-    justify-content: space-around;
-    
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  width: 99vw;
+  height: 6rem;
+  background-color: red;
 }
 
 
@@ -36,6 +30,7 @@ main{
 #resultado {
   display: flex;
   justify-content: center;
+  margin-top: 6rem;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -66,13 +61,14 @@ main{
 
 .buscador{
   display: flex;
-  position: fixed;
-  align-items: center;
-  justify-content: center;
-  width: 95vw;
-  height: 2rem;
-  background-color: red;
+}
 
+.TypeSelector{
+  display: flex;
+}
+
+.GenSelector{
+  display: flex;
 }
 
 
@@ -255,8 +251,13 @@ main{
   align-items: center;
   height: 16vh;
   width: 98vw;
-  gap: 60px;
-  background-color: rgb(67, 156, 92);
+  gap: 4vw;
+}
+
+.PokemonName{
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
 }
 
 .PokemonHeader img{
@@ -269,7 +270,6 @@ main{
   height: 70vh;
   width: 98vw;
   gap: 20px;
-  background-color: rgb(104, 255, 147);
 }
 
 .pokeInfo-content{
@@ -296,6 +296,163 @@ main{
   min-height: 20vh;
 }
 
-.btnRegresar{
-  
+#btnRegresar{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  font-size: larger;
+  align-self: flex-end;
+  justify-self: end;
+  margin: 10px;
+  position: fixed;
+  right: 2vw;
+  bottom: 3vh;
+}
+
+
+/* Color de las tarjetas Info */
+
+.grassHeader{
+  background-color: rgb(67, 156, 92)
+}
+
+.grassBody{
+  background-color: rgb(104, 255, 147);
+}
+
+.fireHeader{
+  background-color:rgb(255, 104, 104) 
+}
+
+.fireBody{
+  background-color:rgb(255, 200, 200)
+}
+
+.waterHeader{
+  background-color: rgb(104, 142, 255);
+}
+
+.waterBody{
+  background-color: rgb(182, 200, 255);
+}
+
+.normalHeader{
+  background-color: rgb(185, 185, 185) ;
+}
+
+.normalBody{
+  background-color: rgb(234, 234, 234);
+}
+
+.bugHeader{
+  background-color: rgb(74, 183, 105) ;
+}
+
+.bugBody{
+  background-color: rgb(156, 193, 166);
+}
+
+.poisonHeader{
+  background-color: rgb(178, 62, 255) ;
+}
+
+.poisonBody{
+  background-color: rgb(216, 159, 255);
+}
+
+.electricHeader{
+  background-color: rgb(255, 255, 58) ;
+}
+
+.electricBody{
+  background-color: rgb(252, 255, 157);
+}
+
+.groundHeader{
+  background-color: rgb(128, 110, 61) ;
+}
+
+.groundBody{
+  background-color: rgb(223, 208, 169);
+}
+
+.fairyHeader{
+  background-color: rgb(255, 151, 241) ;
+}
+
+.fairyBody{
+  background-color: rgb(255, 218, 254);
+}
+
+.fightingHeader{
+  background-color: rgb(255, 157, 82) ;
+}
+
+.fightingBody{
+  background-color: rgb(255, 223, 199);
+}
+
+.psychicHeader{
+  background-color: rgb(255, 25, 228) ;
+}
+
+.psychicBody{
+  background-color: rgb(255, 153, 243);
+}
+
+.rockHeader{
+  background-color: rgb(99, 63, 32);
+}
+
+.rockBody{
+  background-color: rgb(180, 157, 136);
+}
+
+.ghostHeader{
+  background-color: rgb(109, 38, 159);
+}
+
+.ghostBody{
+  background-color: rgb(190, 157, 213);
+}
+
+.iceHeader{
+  background-color: rgb(115, 236, 255);
+}
+
+.iceBody{
+  background-color: rgb(201, 248, 255);
+}
+
+.dragonHeader{
+  background-color: rgb(72, 28, 231);
+}
+
+.dragonBody{
+  background-color: rgb(169, 149, 242);
+}
+
+.steelHeader{
+  background-color: rgb(84, 84, 84);
+}
+
+.steelBody{
+  background-color: rgb(196, 196, 196);
+}
+
+.darkHeader{
+  background-color: rgb(60, 38, 13);
+}
+
+.darkBody{
+  background-color: rgb(136, 126, 114);
+}
+
+.flyingHeader{
+  background-color: #a5d0ff;
+}
+
+.flyingBody{
+  background-color: rgb(226, 239, 255);
 }
