@@ -115,9 +115,12 @@ function renderizarInfo(pokemon){
         (poke) =>`
         <article class="TarjetaInfo" id="${poke.id}Info">
             <div class="PokemonHeader ${poke.tipos[0]}Header">
-                <button id="btnRegresar">←</button>
                 <img src="${poke.sprites}" alt="${poke.nombre}">
-                texto informativo
+                <div class= "PokemonName">
+                    <h2>${poke.nombre}</h2>
+                    <p>${poke.tipos.join(" · ")}</p>
+                </div>
+                <h2>Pokedex: ${poke.id}<h2>
             </div>
             <div class="pokemon-content">
                 <div class="pokeInfo ${poke.tipos[0]}Body">
@@ -141,6 +144,7 @@ function renderizarInfo(pokemon){
                             </p>
                         </div>
                     </div>
+                    <button id="btnRegresar">←</button>
                 </div>
             </div>
         </article>
