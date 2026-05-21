@@ -10,7 +10,7 @@
 ## 21/05/2026
 
 ### Tramo 1
-- []Estilos para tarjetas info según tipo de pokemon
+- [X]Estilos para tarjetas info según tipo de pokemon
 - []terminar de agregar información en las tarjetas info de los pokemon
 
 ### Tramo 2
