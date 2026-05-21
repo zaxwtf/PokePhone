@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.2"
+const VERSION_POKEPHONE = "0.0.3"
 
 
 //Parte fija PokeAPI
@@ -254,3 +254,9 @@ inputBuscar.addEventListener("keydown", (e) =>{
 SelectorTipos.addEventListener("change", () => renderizar(filtrarpokemons()));
 
 SelectorGen.addEventListener("change", () => renderizar(filtrarpokemons()));
+
+
+
+//Incluir version en footer página
+const versionText = document.querySelector(".appVersion")
+versionText.textContent = `Versión ${VERSION_POKEPHONE}`
