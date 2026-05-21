@@ -208,6 +208,19 @@ botonBuscar.addEventListener("click", () => {
     inputBuscar.value = ""
 })
 
+inputBuscar.addEventListener("keydown", (e) =>{
+    if (e.key === "Enter"){
+        const contenedor = document.getElementById("resultado");
+    const busqueda = inputBuscar.value.replaceAll(" ", "").toLowerCase()
+    const pokemonBuscado = pokemonsNormalizados.find(pokemon => pokemon.nombre.toLowerCase() === busqueda)
+    if (pokemonBuscado) {
+        renderizar([pokemonBuscado]); // Pasamos el pokemon dentro de un array porque renderizar espera una lista
+    } else {
+        alert("¡Pokémon no encontrado! Revisa si está bien escrito.");
+    }
+    inputBuscar.value = ""
+    }
+})
 
 
 
