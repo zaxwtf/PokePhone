@@ -27,7 +27,7 @@ main{
 
 .main-nav img{
   width: 200px;
-  margin: 2vw;
+  margin: 5px;
 }
 
 
@@ -314,6 +314,7 @@ main{
   width: 50px;
   height: 50px;
   background-color: rgb(84, 141, 255);
+  opacity: 70%;
   font-size: larger;
   align-self: flex-end;
   justify-self: end;
@@ -321,7 +322,7 @@ main{
   position: fixed;
   right: 2vw;
   bottom: 3vh;
-  border: none;
+  border: black solid;
 }
 
 
