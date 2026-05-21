@@ -58,7 +58,8 @@ function NormalizarPokemon() {
         tipos: pokemon.types.map(t => t.type.name), 
         sprites: pokemon.sprites.other['official-artwork'].front_default,
         pokedex: descripcion,
-        generacion: especie.generation.name
+        generacion: especie.generation.name,
+        estadisticas: pokemon.stats.map((s) => {return{nombre: s.stat.name, valor: s.base_stat}})
         }
     })
 
@@ -139,9 +140,7 @@ function renderizarInfo(pokemon){
                         </div>
                         <h2>Estadísticas</h2>
                         <div class="estadisticas">
-                            <p>
-                                esto y lo otro
-                            </p>
+                        ${poke.estadisticas.map(p =>`<p>${p.nombre}=  ${p.valor}</p>`).join("")}
                         </div>
                     </div>
                     <button id="btnRegresar">←</button>
