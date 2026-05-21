@@ -5,7 +5,7 @@ const API = "https://pokeapi.co/api/v2";
 
     async function ListarPokemons() {
         try{
-            const res = await fetch(`${API}/pokemon?limit=1000`)
+            const res = await fetch(`${API}/pokemon?limit=493`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
@@ -48,7 +48,7 @@ function NormalizarPokemon() {
     const resultado = pokemons.map(item => {
         const pokemon = item.datosBasicos   //Ubicamos el objeto con los datos basicos
         const especie = item.datosEspecie   //Ubicamos el objeto con los datos de especie
-        const entradaEspanol = especie.flavor_text_entries.find(entry => entry.language.name === "es");
+        const entradaEspanol = especie.flavor_text_entries.find(entry => entry.language.name === "es" && entry.version.name);
         const descripcion = entradaEspanol ? entradaEspanol.flavor_text : "Descripción no disponible en Español."
         
         //devolvemos de la arrow function los pokemon normalizados
@@ -57,7 +57,8 @@ function NormalizarPokemon() {
         nombre: pokemon.name, 
         tipos: pokemon.types.map(t => t.type.name), 
         sprites: pokemon.sprites.other['official-artwork'].front_default,
-        pokedex: descripcion
+        pokedex: descripcion,
+        generacion: especie.generation.name
         }
     })
 
@@ -124,7 +125,7 @@ function renderizarInfo(pokemon){
                         <h2>Info</h2>
                         <div class="info">
                             <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam labore eos, quasi aliquid laboriosam, nemo autem ipsum hic, quidem vel voluptas. Laboriosam quod eligendi magni. Et quis ducimus laboriosam voluptates?
+                            ${poke.pokedex}
                             </p>
                         </div>
                         <h2>Fuerte contra:</h2>
@@ -164,22 +165,36 @@ function renderizarInfo(pokemon){
 
 
 //Funcion para filtrar pokemons por tipo
-function filtrarpokemons(tipo) {
-    if (tipo === "todos"){
-        return pokemonsNormalizados
-    }
+
+
+const botonBuscar = document.getElementById("buscador-button")
+const inputBuscar = document.getElementById("buscador-input")
+const SelectorTipos = document.getElementById("TypeSelector")
+const SelectorGen = document.getElementById("GenSelector")
+
+
+function filtrarpokemons() {
+    // if (tipo === "todos"){
+    //     return pokemonsNormalizados
+    // }
     const pokemons = pokemonsNormalizados
-    const filtrado = pokemons.filter(p => p.tipos.includes(tipo))
-    return filtrado
+    // const filtrado = pokemons.filter(p => p.tipos.includes(tipo))
+    // return filtrado
+    const tipoSeleccionado = SelectorTipos.value
+    const genSeleccionada = SelectorGen.value
+
+    const pokemonFiltrado = pokemons.filter(p =>{
+        const tipoOK = (tipoSeleccionado === "todos" || p.tipos.includes(tipoSeleccionado))  //Comprobamos si hay un tipo seleccionado
+        const genOK = (genSeleccionada === "todos" || p.generacion === genSeleccionada)      //Comprobamos si hay una generación seleccionada
+
+        return tipoOK && genOK
+    })
+    return pokemonFiltrado
 }
 
 
 
 // Función para buscar pokemon por nombre
-
-const botonBuscar = document.getElementById("buscador-button")
-const inputBuscar = document.getElementById("buscador-input")
-const SelectorTipos = document.getElementById("TypeSelector")
 
 botonBuscar.addEventListener("click", () => {
     const contenedor = document.getElementById("resultado");
@@ -198,13 +213,9 @@ botonBuscar.addEventListener("click", () => {
 
 //Función para filtrar pokemon por tipos
 
-SelectorTipos.addEventListener("change", () => {
-    const tipoSeleccionado = SelectorTipos.value;
-    const pokemonsFiltrados = filtrarpokemons(tipoSeleccionado);
-    console.log(pokemons)
-    renderizar(pokemonsFiltrados);
-});
+SelectorTipos.addEventListener("change", () => renderizar(filtrarpokemons()));
 
+SelectorGen.addEventListener("change", () => renderizar(filtrarpokemons()));
 
 
 
