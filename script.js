@@ -1,3 +1,7 @@
+//Version PokePhone
+const VERSION_POKEPHONE = "0.0.1"
+
+
 //Parte fija PokeAPI
 const API = "https://pokeapi.co/api/v2";
 
@@ -5,7 +9,7 @@ const API = "https://pokeapi.co/api/v2";
 
     async function ListarPokemons() {
         try{
-            const res = await fetch(`${API}/pokemon?limit=493`)
+            const res = await fetch(`${API}/pokemon?limit=1025`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
@@ -35,9 +39,19 @@ const API = "https://pokeapi.co/api/v2";
 let pokemons = []
 let pokemonsNormalizados = []
 async function GetPokemons() {
-    pokemons = await ListarPokemons()
-    pokemonsNormalizados = NormalizarPokemon()
-    renderizar(pokemonsNormalizados)
+    const pokemonGuardados = localStorage.getItem("pokedex_data")
+    const versionGuardada =localStorage.getItem("pokephone_version")
+
+    if (pokemonGuardados && versionGuardada === VERSION_POKEPHONE){
+        pokemonsNormalizados = JSON.parse(pokemonGuardados)
+        renderizar(pokemonsNormalizados)
+    } else{
+        pokemons = await ListarPokemons()
+        pokemonsNormalizados = NormalizarPokemon()
+        localStorage.setItem("pokedex_data", JSON.stringify(pokemonsNormalizados))
+        localStorage.setItem("pokephone_version", VERSION_POKEPHONE)
+        renderizar(pokemonsNormalizados)
+    }
 }
 
 
@@ -59,7 +73,8 @@ function NormalizarPokemon() {
         sprites: pokemon.sprites.other['official-artwork'].front_default,
         pokedex: descripcion,
         generacion: especie.generation.name,
-        estadisticas: pokemon.stats.map((s) => {return{nombre: s.stat.name, valor: s.base_stat}})
+        estadisticas: pokemon.stats.map((s) => {return{nombre: s.stat.name, valor: s.base_stat}}),
+        grito: pokemon.cries ? pokemon.cries.latest : null
         }
     })
 
@@ -95,13 +110,20 @@ function renderizar(pokemons){
 
         //Funcion para que detecte cuando hacemos click a una de las tarjetas y nos mande a renderizar la pagina de info de ese pokemon en concreto
         const TarjetasPokemons = document.querySelectorAll(".card")
-        const TarjetaPokemon = 0
 
         TarjetasPokemons.forEach(TarjetaPokemon => TarjetaPokemon.addEventListener("click", () =>{   
             const PokemonClickado = pokemonsNormalizados.find(pokemon => pokemon.id === Number(TarjetaPokemon.id))
             console.log(PokemonClickado)
+            if (PokemonClickado && PokemonClickado.grito){
+            const audio = new Audio(PokemonClickado.grito)
+            audio.volume = 0.4
+            audio.play().catch(error => console.error("Error al reproducir el sonido:", error));
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
             renderizarInfo([PokemonClickado])
         }))
+
         
     }
 
@@ -232,7 +254,3 @@ inputBuscar.addEventListener("keydown", (e) =>{
 SelectorTipos.addEventListener("change", () => renderizar(filtrarpokemons()));
 
 SelectorGen.addEventListener("change", () => renderizar(filtrarpokemons()));
-
-
-
-//Función para mostrar mas informacion de un pokemon
