@@ -471,3 +471,16 @@ main{
 .flyingBody{
   background-color: rgb(226, 239, 255);
 }
+
+
+
+/* Estilos footer */
+footer{
+  display: flex;
+  justify-content: center;
+  gap: 7vw;
+  position: fixed;
+  bottom: 0px;
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+}
