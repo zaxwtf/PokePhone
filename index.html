@@ -8,59 +8,54 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <header class="main-nav">
+        <img src="PokePhone.png" alt="logo PokePhone">
+        <div class="buscador">
+            <h3>Nombre: </h3>
+            <input type="text" id="buscador-input">
+            <button id="buscador-button">Buscar</button>
+        </div>
+        <div class="TypeSelector">
+            <p>Tipo: </p>
+            <select name="TypeSelector" id="TypeSelector">
+                <option value="todos">Todos</option>
+                <option value="grass">Planta</option>
+                <option value="fire">Fuego</option>
+                <option value="water">Agua</option>
+                <option value="electric">Electrico</option>
+                <option value="ground">Tierra</option>
+                <option value="rock">Roca</option>
+                <option value="steel">Acero</option>
+                <option value="psychic">Psiquico</option>
+                <option value="normal">Normal</option>
+                <option value="dark">Siniestro</option>
+                <option value="fighting">Lucha</option>
+                <option value="flying">Volador</option>
+                <option value="ghost">Fantasma</option>
+                <option value="ice">Hielo</option>
+                <option value="fairy">Hada</option>
+                <option value="poison">Veneno</option>
+                <option value="bug">Bicho</option>
+                <option value="dragon">Dragon</option>
+            </select>
+        </div>    
+        <div class="GenSelector">
+            <p>Generación: </p>
+            <select name="GenerSelector" id="GenSelector">
+                <option value="todos">Todos</option>
+                <option value="generation-i">1ª Generación</option>
+                <option value="generation-ii">2ª Generación</option>
+                <option value="generation-iii">3ª Generación</option>
+                <option value="generation-iv">4ª Generación</option>
+                <option value="generation-v">5ª Generación</option>
+                <option value="generation-vi">6ª Generación</option>
+                <option value="generation-vii">7ª Generación</option>
+                <option value="generation-viii">8ª Generación</option>
+                <option value="generation-ix">9ª Generación</option>
+            </select>
+        </div>          
+    </header>
     <main id="main">
-        <header class="main-nav">
-            <img src="PokePhone.png" alt="logo PokePhone">
-            <div class="buscador">
-                <h3>Nombre: </h3>
-                <input type="text" id="buscador-input">
-                <button id="buscador-button">Buscar</button>
-            </div>
-            <div class="TypeSelector">
-                <p>Tipo: </p>
-                <select name="TypeSelector" id="TypeSelector">
-                    <option value="todos">Todos</option>
-                    <option value="grass">Planta</option>
-                    <option value="fire">Fuego</option>
-                    <option value="water">Agua</option>
-                    <option value="electric">Electrico</option>
-                    <option value="ground">Tierra</option>
-                    <option value="rock">Roca</option>
-                    <option value="steel">Acero</option>
-                    <option value="psychic">Psiquico</option>
-                    <option value="normal">Normal</option>
-                    <option value="dark">Siniestro</option>
-                    <option value="fighting">Lucha</option>
-                    <option value="flying">Volador</option>
-                    <option value="ghost">Fantasma</option>
-                    <option value="ice">Hielo</option>
-                    <option value="fairy">Hada</option>
-                    <option value="poison">Veneno</option>
-                    <option value="bug">Bicho</option>
-                    <option value="dragon">Dragon</option>
-                </select>
-            </div>    
-            <div class="GenSelector">
-                <p>Generación: </p>
-                <select name="GenerSelector" id="GenSelector">
-                    <option value="todos">Todos</option>
-                    <option value="generation-i">1ª Generación</option>
-                    <option value="generation-ii">2ª Generación</option>
-                    <option value="generation-iii">3ª Generación</option>
-                    <option value="generation-iv">4ª Generación</option>
-                    <option value="generation-v">5ª Generación</option>
-                    <option value="generation-vi">6ª Generación</option>
-                    <option value="generation-vii">7ª Generación</option>
-                    <option value="generation-viii">8ª Generación</option>
-                    <option value="generation-ix">9ª Generación</option>
-                </select>
-            </div> 
-            
-        </header>
-        
-        
-
-
         <div id="resultado"></div>
     </main>
 </body>
