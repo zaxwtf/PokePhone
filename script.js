@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.1"
+const VERSION_POKEPHONE = "0.0.2"
 
 
 //Parte fija PokeAPI
@@ -177,7 +177,7 @@ function renderizarInfo(pokemon){
         const btnRegresar = document.getElementById("btnRegresar")
 
         btnRegresar.addEventListener("click", ()=>{
-        renderizar(pokemonsNormalizados)
+        renderizar(filtrarpokemons())
 })
 }
 
