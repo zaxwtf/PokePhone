@@ -10,9 +10,17 @@ const API = "https://pokeapi.co/api/v2";
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
             const promesas = urls.map(async (url) => {
+                //Petición para info de los pokemon
                 const resPokemon = await fetch(url)
                 const dataPokemon = await resPokemon.json()
-                return dataPokemon
+
+                //Petición para info mas especifica de cada especia pokemon
+                const resEspecie = await fetch(dataPokemon.species.url)
+                const dataEspecie = await resEspecie.json()
+                return {
+                    datosBasicos: dataPokemon,
+                    datosEspecie: dataEspecie
+                };
             }
             )
             const PokemonCompletos = await Promise.all(promesas)
@@ -37,7 +45,22 @@ async function GetPokemons() {
 
     //funcion para Normalizar una array con los nombres de todos los pokemon y sus tipos
 function NormalizarPokemon() {
-    const resultado = pokemons.map(pokemon => ({id: pokemon.id, nombre: pokemon.name, tipos: pokemon.types.map(t => t.type.name), sprites: pokemon.sprites.front_default}))
+    const resultado = pokemons.map(item => {
+        const pokemon = item.datosBasicos   //Ubicamos el objeto con los datos basicos
+        const especie = item.datosEspecie   //Ubicamos el objeto con los datos de especie
+        const entradaEspanol = especie.flavor_text_entries.find(entry => entry.language.name === "es");
+        const descripcion = entradaEspanol ? entradaEspanol.flavor_text : "Descripción no disponible en Español."
+        
+        //devolvemos de la arrow function los pokemon normalizados
+        return {
+        id: pokemon.id, 
+        nombre: pokemon.name, 
+        tipos: pokemon.types.map(t => t.type.name), 
+        sprites: pokemon.sprites.other['official-artwork'].front_default,
+        pokedex: descripcion
+        }
+    })
+
     return resultado
 }
 
