@@ -112,6 +112,10 @@ main{
   text-transform: capitalize;
 }
 
+.PokemonName p{
+  font-size: 14px;
+}
+
 .PokemonHeader img{
   width: 100px;
 }
