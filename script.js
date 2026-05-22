@@ -138,12 +138,10 @@ function renderizar(pokemons){
     contenedor.innerHTML = pokemons.map(
         (pokemon) => `
         <article class= "card" id= "${pokemon.id}">
-            <div class= "${pokemon.tipos[0]}">
-                <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
-                <div class = "card-content">
-                    <h2>${pokemon.nombre}</h2>
-                    <p>${pokemon.tipos.join(" · ")}</p>
-                </div>
+            <img src="${pokemon.sprites}" alt="${pokemon.nombre}">
+            <div class = "card-content">
+                <h2>${pokemon.nombre}</h2>
+                <p>${pokemon.tipos.join(" · ")}</p>
             </div>
         </article>
     `,
@@ -151,11 +149,9 @@ function renderizar(pokemons){
         .join("");
 
         //Funcion para cambiar color a las card segun tipo
-        const PokemonCard = document.querySelectorAll(".card")
         
-        PokemonCard.forEach(card => {
-            card.style.addProperty("--type-primary", TYPE_COLORS[pokemon])
-        })
+    
+        ColorearTarjetas(pokemons)
         
         
 
@@ -183,7 +179,28 @@ function renderizar(pokemons){
 
 GetPokemons()
 
-
+function ColorearTarjetas(pokemons){
+    const PokemonCard = document.querySelectorAll(".card")
+    console.log(PokemonCard)
+    const tipoPrimary = pokemons.map(p => {
+        return p.tipos[0]
+    })
+    const tipoSecondary = pokemons.map(p => {
+        if (p.tipos[1]){
+            return p.tipos[1]
+        } else{
+            return null
+        }
+    })
+    PokemonCard.forEach(card => {
+            card.style.setProperty("--type-primary", TYPE_COLORS[tipoPrimary])
+            if (TYPE_COLORS[pokemons[card.id - 1].tipos[1]]){
+            card.style.setProperty("--type-secondary", TYPE_COLORS[tipoSecondary])
+            }else {
+                card.style.setProperty("--type-secondary", "white")
+            }
+        })
+}
 
 //Función para renderizar Tarjeta de información de un pokemon en concreto
 function renderizarInfo(pokemon){
