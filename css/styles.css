@@ -50,6 +50,8 @@ main{
   text-align: center;
   text-transform: capitalize;
   min-width: 95vw;
+  display: flex;
+  align-items: center;
 }
 .card img {
   margin-left: 3vw;
@@ -85,169 +87,6 @@ main{
 }
 
 
-
-/* color para cada tarjeta */
-/* .grass {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(104, 255, 147), rgb(200, 255, 216));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-
-}
-
-.fire {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(255, 104, 104), rgb(255, 200, 200));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-
-.water {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(104, 142, 255), rgb(182, 200, 255));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-.normal {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(185, 185, 185), rgb(234, 234, 234));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-
-.bug{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(74, 183, 105), rgb(156, 193, 166));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-
-.poison{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(178, 62, 255), rgb(216, 159, 255));
-  border: 1px solid #ddd;
-  border-radius: 20px;  
-  gap: 20px;
-}
-
-.electric{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(255, 255, 58), rgb(252, 255, 157));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;   
-}
-
-.ground{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(128, 110, 61), rgb(223, 208, 169));
-  border: 1px solid #ddd;
-  border-radius: 20px;  
-  gap: 20px; 
-}
-
-.fairy{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(255, 151, 241), rgb(255, 218, 254));
-  border: 1px solid #ddd;
-  border-radius: 20px;  
-  gap: 20px; 
-}
-
-.fighting{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(255, 157, 82), rgb(255, 223, 199));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;
-}
-
-.psychic{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(255, 25, 228), rgb(255, 153, 243));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;
-}
-
-.rock{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(99, 63, 32), rgb(180, 157, 136));
-  border: 1px solid #ddd;
-  border-radius: 20px;   
-  gap: 20px;
-}
-
-.ghost{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(109, 38, 159), rgb(190, 157, 213));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;   
-}
-
-.ice{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(115, 236, 255), rgb(201, 248, 255));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;  
-}
-
-.dragon{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(72, 28, 231), rgb(169, 149, 242));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px;
-}
-
-.steel{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(84, 84, 84), rgb(196, 196, 196));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-
-.dark{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, rgb(60, 38, 13), rgb(136, 126, 114));
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  gap: 20px;
-}
-
-.flying{
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, #a5d0ff, rgb(226, 239, 255));
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  gap: 20px; 
-} */
 
 
 /* Estilos para tarjetas de información extensa pokemons */
@@ -501,6 +340,11 @@ footer{
   .card{
     min-width: 48vw;
   }
+
+  .card-content{
+    justify-content: center;
+  }
+
   .PokemonHeader{
     gap: 20vw;
 
