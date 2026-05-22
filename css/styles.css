@@ -260,7 +260,7 @@ main{
   justify-content: center;
   align-items: center;
   height: 16vh;
-  width: 99vw;
+  width: 100vw;
   gap: 4vw;
 }
 
@@ -278,7 +278,7 @@ main{
   display: flex;
   flex-direction: column;
   height: 70vh;
-  width: 99vw;
+  width: 100vw;
   gap: 20px;
 }
 
@@ -489,4 +489,17 @@ footer{
   background-color: rgb(255, 255, 255);
   width: 100vw;
   height: 1rem;
+}
+
+
+
+/* Media querys para ordenador */
+@media (width > 750px){
+  .card{
+    min-width: 48vw;
+  }
+  .PokemonHeader{
+    gap: 20vw;
+
+  }
 }
