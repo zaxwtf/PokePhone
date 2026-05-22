@@ -36,6 +36,7 @@ main{
   display: flex;
   justify-content: center;
   margin-top: 8.2rem;
+  margin-bottom: 1.2rem;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -483,4 +484,5 @@ footer{
   bottom: 0px;
   background-color: rgb(255, 255, 255);
   width: 100vw;
+  height: 1rem;
 }
