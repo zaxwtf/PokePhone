@@ -155,6 +155,22 @@ main{
   margin-left: 2vw;
 }
 
+.tallaje{
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.tallaje-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: rgb(250, 250, 250);
+  min-height: 1.5rem;
+  min-width: 10rem;
+}
+
 
 #btnRegresar{
   border-radius: 50%;
