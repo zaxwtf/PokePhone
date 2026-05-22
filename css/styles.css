@@ -369,12 +369,16 @@ canvas{
   }
 
   .card-content{
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .PokemonHeader{
     gap: 20vw;
 
+  }
+
+  .PokemonHeader img{
+    margin-left: 20vw;
   }
 }
 
