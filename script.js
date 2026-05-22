@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.6"
+const VERSION_POKEPHONE = "0.0.7"
 
 
 //Parte fija PokeAPI
@@ -117,7 +117,9 @@ function NormalizarPokemon(listaANormalizar) {
         pokedex: descripcion,
         generacion: especie.generation.name,
         estadisticas: pokemon.stats.map((s) => {return{nombre: s.stat.name, valor: s.base_stat}}),
-        grito: pokemon.cries ? pokemon.cries.latest : null
+        grito: pokemon.cries ? pokemon.cries.latest : null,
+        peso: pokemon.weight,
+        altura: pokemon.height
         }
     })
 
@@ -147,8 +149,6 @@ function renderizar(pokemons){
     `,
         )
         .join("");
-
-        //Funcion para cambiar color a las card segun tipo
         
     
         ColorearTarjetas(pokemons)
@@ -178,6 +178,9 @@ function renderizar(pokemons){
     }
 
 GetPokemons()
+
+
+//Funcion para cambiar color a las card segun tipo
 
 function ColorearTarjetas(pokemons){
     const PokemonCard = document.querySelectorAll(".card")
@@ -219,11 +222,10 @@ function renderizarInfo(pokemon){
                             ${poke.pokedex}
                             </p>
                         </div>
-                        <h2>Fuerte contra:</h2>
-                        <div class="FuerteContra">
-                            <p>
-                                lo que sea
-                            </p>
+                        <h2>Medidas:</h2>
+                        <div class="tallaje">
+                            <div class="tallaje-content"><p>Peso: ${(poke.peso / 10)} Kg.</p></div>
+                            <div class="tallaje-content"><p>Altura: ${(poke.altura / 10)} m.</p></div>
                         </div>
                         <h2>Estadísticas</h2>
                         <div class="estadisticas">
