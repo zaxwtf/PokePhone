@@ -5,6 +5,29 @@ const VERSION_POKEPHONE = "0.0.5"
 //Parte fija PokeAPI
 const API = "https://pokeapi.co/api/v2";
 
+
+//Colores tipos pokemon
+const TYPE_COLORS ={
+    normal: "#A8A77A",
+    fire: "#EE8130",
+    water: "#6390F0",
+    grass: "#7AC74C",
+    electric: "#F7D02C",
+    ice: "#96D9D6",
+    fighting: "#C22E28",
+    poison: "#A33EA1",
+    ground: "#E2BF65",
+    flying: "#A98FF3",
+    psychic: "#F95587",
+    bug: "#A6B91A",
+    rock: "#B6A136",
+    ghost: "#735797",
+    dragon: "#6F35FC",
+    dark: "#705746",
+    steel: "#B7B7CE",
+    fairy: "#D685AD",
+}
+
  //función para hacer lista de pokemons
 
     async function ListarPokemons(offset, limit) {
@@ -126,6 +149,17 @@ function renderizar(pokemons){
     `,
         )
         .join("");
+
+        //Funcion para cambiar color a las card segun tipo
+        const PokemonCard = document.querySelectorAll(".card")
+        
+        PokemonCard.forEach(card => {
+            card.style.addProperty("--type-primary", TYPE_COLORS[pokemon])
+        })
+        
+        
+
+
         
 
         //Funcion para que detecte cuando hacemos click a una de las tarjetas y nos mande a renderizar la pagina de info de ese pokemon en concreto
