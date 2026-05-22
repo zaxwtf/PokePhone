@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.5"
+const VERSION_POKEPHONE = "0.0.6"
 
 
 //Parte fija PokeAPI
@@ -181,24 +181,18 @@ GetPokemons()
 
 function ColorearTarjetas(pokemons){
     const PokemonCard = document.querySelectorAll(".card")
-    console.log(PokemonCard)
-    const tipoPrimary = pokemons.map(p => {
-        return p.tipos[0]
-    })
-    const tipoSecondary = pokemons.map(p => {
-        if (p.tipos[1]){
-            return p.tipos[1]
-        } else{
-            return null
+    PokemonCard.forEach((card, index) => {
+            const PokemonActual = pokemons[index]
+
+            const tipo1 = PokemonActual.tipos[0]
+            const tipo2 = PokemonActual.tipos[1]
+            const colorPrimario = TYPE_COLORS[tipo1]
+            card.style.setProperty("--type-primary", colorPrimario)
+            if (tipo2 && TYPE_COLORS[tipo2]) {
+            card.style.setProperty("--type-secondary", TYPE_COLORS[tipo2]);
+        } else {
+            card.style.setProperty("--type-secondary", colorPrimario);
         }
-    })
-    PokemonCard.forEach(card => {
-            card.style.setProperty("--type-primary", TYPE_COLORS[tipoPrimary])
-            if (TYPE_COLORS[pokemons[card.id - 1].tipos[1]]){
-            card.style.setProperty("--type-secondary", TYPE_COLORS[tipoSecondary])
-            }else {
-                card.style.setProperty("--type-secondary", "white")
-            }
         })
 }
 
