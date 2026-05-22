@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.4"
+const VERSION_POKEPHONE = "0.0.5"
 
 
 //Parte fija PokeAPI
@@ -9,7 +9,7 @@ const API = "https://pokeapi.co/api/v2";
 
     async function ListarPokemons(offset, limit) {
         try{
-            const res = await fetch(`${API}/pokemon?offset=${offset}&limit=${limit}}`)
+            const res = await fetch(`${API}/pokemon?offset=${offset}&limit=${limit}`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
