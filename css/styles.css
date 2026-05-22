@@ -380,6 +380,10 @@ canvas{
   .PokemonHeader img{
     margin-left: 20vw;
   }
+
+  .canvas-content{
+    width: 500px;
+  }
 }
 
 
