@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.0.3"
+const VERSION_POKEPHONE = "0.0.4"
 
 
 //Parte fija PokeAPI
@@ -7,9 +7,9 @@ const API = "https://pokeapi.co/api/v2";
 
  //función para hacer lista de pokemons
 
-    async function ListarPokemons() {
+    async function ListarPokemons(offset, limit) {
         try{
-            const res = await fetch(`${API}/pokemon?limit=1025`)
+            const res = await fetch(`${API}/pokemon?offset=${offset}&limit=${limit}}`)
             if (!res.ok) throw new Error(`Dato no encontrado (${res.status})`);
             const data = await res.json()
             const urls = data.results.map(pokemon => pokemon.url)
@@ -46,20 +46,40 @@ async function GetPokemons() {
         pokemonsNormalizados = JSON.parse(pokemonGuardados)
         renderizar(pokemonsNormalizados)
     } else{
-        pokemons = await ListarPokemons()
-        pokemonsNormalizados = NormalizarPokemon()
-        localStorage.setItem("pokedex_data", JSON.stringify(pokemonsNormalizados))
-        localStorage.setItem("pokephone_version", VERSION_POKEPHONE)
+
+        //Paso A: listar los primeros 20 Pokemons rapidamente
+        const primerosPokemons = await ListarPokemons(0, 20)
+        const primerosNormalizados = NormalizarPokemon(primerosPokemons)
+        pokemonsNormalizados = primerosNormalizados
         renderizar(pokemonsNormalizados)
+
+        //Paso B: Listar el resto de pokemons con la funcion auxiliar CargarRestoPokemons
+        CargarRestoPokemons(pokemonsNormalizados)
     }
+}
+
+async function CargarRestoPokemons(primeros20) {
+    const restoPokemons = await ListarPokemons(20, 1005)
+    if (restoPokemons){
+        const restoPokemonsNormalizados = NormalizarPokemon(restoPokemons)
+        pokemonsNormalizados = [...primeros20, ...restoPokemonsNormalizados]
+    }
+    //Guardamos los datos en localStorage
+    localStorage.setItem("pokedex_data", JSON.stringify(pokemonsNormalizados))
+    localStorage.setItem("pokephone_version", VERSION_POKEPHONE)
+
+    // refrescamos la vista para que aparezcan los pokemons si no hay aplicadas busquedas
+        const inputBuscar = document.getElementById("buscador-input");
+        if (inputBuscar && inputBuscar.value === "") {
+            renderizar(pokemonsNormalizados);
+        }
 }
 
 
 
-
     //funcion para Normalizar una array con los nombres de todos los pokemon y sus tipos
-function NormalizarPokemon() {
-    const resultado = pokemons.map(item => {
+function NormalizarPokemon(listaANormalizar) {
+    const resultado = listaANormalizar.map(item => {
         const pokemon = item.datosBasicos   //Ubicamos el objeto con los datos basicos
         const especie = item.datosEspecie   //Ubicamos el objeto con los datos de especie
         const entradaEspanol = especie.flavor_text_entries.find(entry => entry.language.name === "es" && entry.version.name);
