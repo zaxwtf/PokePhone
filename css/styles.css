@@ -119,7 +119,7 @@ main{
 .pokeInfo{
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  min-height: 70vh;
   width: 100vw;
   gap: 20px;
 }
@@ -145,7 +145,7 @@ main{
 .estadisticas{
   border-radius: 10px;
   background-color: rgb(250, 250, 250);
-  min-height: 20vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -350,6 +350,17 @@ footer{
 }
 
 
+.canvas-content{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+canvas{
+  width: 100%;
+}
+
+
 
 /* Media querys para ordenador */
 @media (width > 750px){
@@ -366,3 +377,5 @@ footer{
 
   }
 }
+
+
