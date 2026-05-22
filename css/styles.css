@@ -21,8 +21,9 @@ main{
   position: fixed;
   flex-direction: column;
   width: 99vw;
-  height: 8rem;
-  background: linear-gradient(to bottom, red 0%, black 40%, white 60%)
+  height: 8.5rem;
+  background: linear-gradient(to bottom, red 0%, black 40%, white 60%);
+  gap: 3px;
 }
 
 .main-nav img{
@@ -35,7 +36,7 @@ main{
 #resultado {
   display: flex;
   justify-content: center;
-  margin-top: 8.2rem;
+  margin-top: 8.8rem;
   margin-bottom: 1.2rem;
   flex-wrap: wrap;
   gap: 12px;
@@ -67,14 +68,17 @@ main{
 
 .buscador{
   display: flex;
+  margin-left: 8px;
 }
 
 .TypeSelector{
   display: flex;
+  margin-left: 8px;
 }
 
 .GenSelector{
   display: flex;
+  margin-left: 8px;
 }
 
 
