@@ -116,7 +116,7 @@ function NormalizarPokemon(listaANormalizar) {
         sprites: pokemon.sprites.other['official-artwork'].front_default,
         pokedex: descripcion,
         generacion: especie.generation.name,
-        estadisticas: pokemon.stats.map((s) => {return{nombre: s.stat.name, valor: s.base_stat}}),
+        estadisticas: pokemon.stats.map((s) => {return{nombre: [s.stat.name], valor: s.base_stat}}),
         grito: pokemon.cries ? pokemon.cries.latest : null,
         peso: pokemon.weight,
         altura: pokemon.height
@@ -229,7 +229,10 @@ function renderizarInfo(pokemon){
                         </div>
                         <h2>Estadísticas</h2>
                         <div class="estadisticas">
-                        ${poke.estadisticas.map(p =>`<p>${p.nombre}=  ${p.valor}</p>`).join("")}
+                        <div class="canvas-content">
+                            <canvas id="myChart" height="100" width="100"></canvas>
+                        </div>
+                        
                         </div>
                     </div>
                     <button id="btnRegresar">←</button>
@@ -239,8 +242,28 @@ function renderizarInfo(pokemon){
         
         `
         
+        
         )
+        const ctx = document.getElementById('myChart');
 
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+        labels: ["HP.", "ATK.", "DEF.", "SP. ATK.", "SP. DEF.", "Speed"],
+        datasets: [{
+        label: 'Basic Stats',
+        data: pokemon[0].estadisticas.map(p => p.valor),
+        borderWidth: 1
+    }]
+    },
+        options: {
+        scales: {
+        y: {
+        beginAtZero: true
+        }
+    }
+    }
+});
         const btnRegresar = document.getElementById("btnRegresar")
 
         btnRegresar.addEventListener("click", ()=>{
@@ -327,3 +350,6 @@ SelectorGen.addEventListener("change", () => renderizar(filtrarpokemons()));
 //Incluir version en footer página
 const versionText = document.querySelector(".appVersion")
 versionText.textContent = `Versión ${VERSION_POKEPHONE}`
+
+
+//prueba chart
