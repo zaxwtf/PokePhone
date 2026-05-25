@@ -1,5 +1,5 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.1.0"
+const VERSION_POKEPHONE = "0.2.0"
 
 
 //Parte fija PokeAPI
