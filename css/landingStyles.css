@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.landing-header{
+    display: flex;
+    min-width: 100vw;
+    min-height: 16vh;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+}
+
+header img{
+    width: 80vw;
+    height: 24vw;
+}
+
+main{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.landing-btn{
+    box-sizing: border-box;
+    border: 1px solid;
+    background-color: red;
+    min-width: 50%;
+    min-height: 42vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-btn img{
+    width: 15vw;
+}
+
+.landing-btn:hover{
+    background-color: rgb(214, 0, 0);
+}
+
+.landing-btn:active{
+    background-color: rgb(255, 26, 26);
+}
