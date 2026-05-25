@@ -289,11 +289,7 @@ const SelectorGen = document.getElementById("GenSelector")
 
 
 function filtrarpokemons() {
-    // if (tipo === "todos"){
-    //     return pokemonsNormalizados
-    // }
     const pokemons = pokemonsNormalizados
-    // const filtrado = pokemons.filter(p => p.tipos.includes(tipo))
     // return filtrado
     const tipoSeleccionado = SelectorTipos.value
     const genSeleccionada = SelectorGen.value
