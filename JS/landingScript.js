@@ -12,3 +12,6 @@ itemsBtn.addEventListener('click', () =>{
     return window.location.href = 'items.html'
 });
 
+//Incluir version en footer página
+const versionText = document.querySelector(".appVersion")
+versionText.textContent = `Versión ${window.VERSION_POKEPHONE}`
