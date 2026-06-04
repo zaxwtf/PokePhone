@@ -5,6 +5,13 @@ const VERSION_POKEPHONE = "0.2.0"
 //Parte fija PokeAPI
 const API = "https://pokeapi.co/api/v2";
 
+//Volver a menu principal
+const btnMenu = document.querySelector('#pokephoneIcon')
+
+btnMenu.addEventListener("click", () =>{
+    return window.location.href = "index.html"
+})
+
 
 //Colores tipos pokemon
 const TYPE_COLORS ={
