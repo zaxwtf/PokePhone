@@ -1,7 +1,4 @@
 //Version PokePhone
-const VERSION_POKEPHONE = "0.2.0"
-
-
 //Parte fija PokeAPI
 const API = "https://pokeapi.co/api/v2";
 
