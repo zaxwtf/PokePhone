@@ -50,12 +50,12 @@ main{
 }
 
 footer{
-  display: flex;
-  justify-content: center;
-  gap: 7vw;
-  position: fixed;
-  bottom: 0px;
-  background-color: rgb(255, 255, 255);
-  width: 100vw;
-  height: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 7vw;
+    position: fixed;
+    bottom: 0px;
+    background-color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 1rem;
 }
